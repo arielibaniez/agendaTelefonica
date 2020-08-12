@@ -1,0 +1,64 @@
+package agenda;
+
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String name;
+		String number;
+		Boolean exit=false;
+		Contacto c;
+		Directory agendaTelefonica = new Directory();
+		
+		
+		while(exit==false) {
+			System.out.println(" ----------------------------");
+			System.out.println("| Please, select your option:|");
+			System.out.println(" ----------------------------");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("  ***********************");
+			System.out.println("  *                     *");
+			System.out.println("  * [1]. Add contact.   *");
+			System.out.println("  * [2]. Search contact.*");
+			System.out.println("  * [3]. Remove contact.*");
+			System.out.println("  * [4]. Contact list.  *");
+			System.out.println("  * [5]. Exit.          *");
+			System.out.println("  *                     *");
+			System.out.println("  ***********************");
+		
+			int option=scan.nextInt();
+			switch(option) {
+				case 1:
+					name=JOptionPane.showInputDialog("[Input name and lastname]");
+					number=JOptionPane.showInputDialog("[Input number]");
+					c = new Contacto(name,number);
+					agendaTelefonica.addContact(c);
+					break;
+				case 2:
+					name = JOptionPane.showInputDialog("[Input name and lastname]");
+					agendaTelefonica.searchContact(name);
+					break;
+				case 3:
+					name= JOptionPane.showInputDialog("[Input name and lastname]");
+					c = new Contacto(name,"0");
+					agendaTelefonica.removeContact(c);
+					break;
+				case 4:
+					agendaTelefonica.showContacts();
+					break;
+				case 5:
+					System.out.println(" ___________________________");
+					System.out.println("|                           |");
+					System.out.println("|Thanks for use the program.|");
+					System.out.println("|___________________________|");
+					exit=true;
+					break;
+			}
+		}
+	}	
+	}
